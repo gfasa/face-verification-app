@@ -65,8 +65,7 @@ class CamApp(App):
     def verify(self, *args):
     
         detection_threshold = 0.6
-        verification_threshold = 0.6
-        
+        verification_threshold = 0.6        
         SAVE_PATH = os.path.join('application_data', 'input_image', 'input_image.jpg')
         ret, frame = self.capture.read()
         frame = frame[120:120+250, 200:200+250, :]
@@ -88,12 +87,9 @@ class CamApp(App):
         self.verification_label.text = 'Welcome my Lord!' if verified == True else 'You shall not pass!' 
         
         Logger.info(results)
-        Logger.info(np.sum(np.array(results)>0.2))
-        Logger.info(np.sum(np.array(results)>0.4))
-        Logger.info(np.sum(np.array(results)>0.5))
-        Logger.info(np.sum(np.array(results)>0.8))
-
-        
+        Logger.info(detection)
+        Logger.info(verified)
+                
         return results, verified
         
 # if __name__ == 'main':
